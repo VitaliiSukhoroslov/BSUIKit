@@ -26,7 +26,7 @@ open class BSView: UIView {
 
     // Initialization from the interface file is not available
     @available(*, unavailable)
-    required init?(coder: NSCoder) {
+    override required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
