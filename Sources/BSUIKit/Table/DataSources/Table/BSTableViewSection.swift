@@ -9,13 +9,13 @@
 import UIKit
 
 public class BSTableViewSection: BSTableViewSectionProtocol {
-    var canMoveRow: Bool { false }
+    public var canMoveRow: Bool { false }
 
-    var headerItem: BSTableViewSectionHeaderCompatible?
-    var items: [BSTableViewCompatible]
-    var footerItem: BSTableViewSectionFooterCompatible?
-    var headerHeight: CGFloat?
-    var footerHeight: CGFloat?
+    public var headerItem: BSTableViewSectionHeaderCompatible?
+    public var items: [BSTableViewCompatible]
+    public var footerItem: BSTableViewSectionFooterCompatible?
+    public var headerHeight: CGFloat?
+    public var footerHeight: CGFloat?
 
     public init(
         headerItem: BSTableViewSectionHeaderCompatible? = nil,

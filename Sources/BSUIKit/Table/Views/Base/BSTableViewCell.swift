@@ -28,7 +28,8 @@ open class BSTableViewCell: UITableViewCell {
 
     /// Initializer for initializing a cell from a storyboard or xib.
     /// Generates an error because this class is only intended to create cells programmatically.
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    override required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
