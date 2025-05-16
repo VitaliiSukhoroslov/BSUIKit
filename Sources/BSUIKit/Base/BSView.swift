@@ -10,7 +10,7 @@ import UIKit
 
 /// `BaseView` is a base class for custom views that simplifies the process of creating and customizing a user interface.
 /// This class sets up common methods for initializing the UI, setting constraints, and adding listeners.
-public final class BSView: UIView {
+public class BSView: UIView {
 
     // MARK: - Initialization
 
