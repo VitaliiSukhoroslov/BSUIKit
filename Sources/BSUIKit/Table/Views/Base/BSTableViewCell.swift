@@ -10,7 +10,7 @@ import UIKit
 
 /// `BaseTableViewCell` - Base table cell class with user interface presets and convenient settings.
 /// Provides the basic structure for creating UI components, adding blocking, and listening to events.
-open class BSTableViewCell: UITableViewCell {
+public final class BSTableViewCell: UITableViewCell {
 
     /// Initializer for creating a cell programmatically.
     /// Initializes the user interface, adding constraints and event listeners.
