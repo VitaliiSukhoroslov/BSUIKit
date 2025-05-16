@@ -10,7 +10,7 @@ import UIKit
 
 /// `BaseTableViewCell` - Base table cell class with user interface presets and convenient settings.
 /// Provides the basic structure for creating UI components, adding blocking, and listening to events.
-class BSTableViewCell: UITableViewCell {
+open class BSTableViewCell: UITableViewCell {
 
     /// Initializer for creating a cell programmatically.
     /// Initializes the user interface, adding constraints and event listeners.
@@ -34,19 +34,19 @@ class BSTableViewCell: UITableViewCell {
 
     // MARK: - Setup Methods
     /// Method for initializing the user interface. Overridden in subclasses.
-    func initUI() {
+    open func initUI() {
     }
 
     /// Method for adding interface restrictions. Overridden in subclasses.
-    func initConstraints() {
+    open func initConstraints() {
     }
 
     /// Method for adding event listeners (handlers). Overridden in subclasses.
-    func initListeners() {
+    open func initListeners() {
     }
 
     /// Additional cell settings. Sets a transparent background for the cell and its contents.
-    func additionalSetup() {
+    open func additionalSetup() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
     }

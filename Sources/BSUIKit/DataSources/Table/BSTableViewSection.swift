@@ -7,7 +7,6 @@
 
 #if os(iOS)
 import UIKit
-import NFUIKit
 
 public class BSTableViewSection: BSTableViewSectionProtocol {
     var canMoveRow: Bool { false }
@@ -17,20 +16,17 @@ public class BSTableViewSection: BSTableViewSectionProtocol {
     var footerItem: BSTableViewSectionFooterCompatible?
     var headerHeight: CGFloat?
     var footerHeight: CGFloat?
-    var typeSection: Any?
 
-    init(
+    public init(
         headerItem: BSTableViewSectionHeaderCompatible? = nil,
         items: [BSTableViewCompatible],
         footerItem: BSTableViewSectionFooterCompatible? = nil,
         headerHeight: CGFloat? = nil,
-        footerHeight: CGFloat? = nil,
-        typeSection: Any? = nil
+        footerHeight: CGFloat? = nil
     ) {
         self.headerItem = headerItem
         self.items = items
         self.footerItem = footerItem
-        self.typeSection = typeSection
         if let headerHeight {
             self.headerHeight = headerHeight
         } else {
