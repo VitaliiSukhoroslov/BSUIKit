@@ -105,7 +105,7 @@ open class BSTableViewDataSource: NSObject, BSTableViewData, UITableViewDataSour
 }
 
 // MARK: - UITableViewDelegate
-extension TableViewDataSource: UITableViewDelegate {
+extension BSTableViewDataSource: UITableViewDelegate {
 
     /// Returns a view to use as the header for the specified section.
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -129,7 +129,7 @@ extension TableViewDataSource: UITableViewDelegate {
 }
 
 // MARK: - UIScrollViewDelegate
-extension TableViewDataSource: UIScrollViewDelegate {
+extension BSTableViewDataSource: UIScrollViewDelegate {
 
     /// Called when the scroll view scrolls. Invokes `onLastVisibleCell` for each visible index path.
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
