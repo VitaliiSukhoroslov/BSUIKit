@@ -10,7 +10,7 @@ import UIKit
 
 /// A base class `BSTableViewDataSource` - that acts as a data source and delegate for `UITableView`.
 /// Supports sectioned data, cell editing, moving, and row prefetching.
-open class BSTableViewDataSource: NSObject, TableViewData, UITableViewDataSource, UITableViewDataSourcePrefetching {
+open class BSTableViewDataSource: NSObject, BSTableViewData, UITableViewDataSource, UITableViewDataSourcePrefetching {
 
     /// Closure called when rows are requested for prefetching.
     public var onPrefetchRows: (([IndexPath]) -> Void)?
