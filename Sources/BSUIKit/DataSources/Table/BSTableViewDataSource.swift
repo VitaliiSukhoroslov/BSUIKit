@@ -22,7 +22,7 @@ open class BSTableViewDataSource: NSObject, BSTableViewData, UITableViewDataSour
     public let tableView: UITableView
 
     /// Array of sections defining the content structure of the table.
-    open var sections: [BSTableViewSection] = []
+    open var sections: [BSTableViewSectionProtocol] = []
 
     /// Initializes the data source and assigns itself as the table’s dataSource and prefetchDataSource.
     /// - Parameter tableView: The table view this data source will be assigned to.

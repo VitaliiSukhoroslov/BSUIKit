@@ -7,41 +7,44 @@
 
 #if os(iOS)
 import UIKit
+import NFUIKit
 
-/// A protocol representing a section in a `UITableView`, including its header, footer, and row items.
-///
-/// Conform to this protocol to define how each section should behave and appear.
-public protocol BSTableViewSection {
+class BSTableViewSection: BSTableViewSectionProtocol {
+    var canMoveRow: Bool { false }
 
-    /// An optional model that provides a view for the section header.
-    var headerItem: BSTableViewSectionHeaderCompatible? { get set }
+    var headerItem: BSTableViewSectionHeaderCompatible?
+    var items: [BSTableViewCompatible]
+    var footerItem: BSTableViewSectionFooterCompatible?
+    var headerHeight: CGFloat?
+    var footerHeight: CGFloat?
+    var typeSection: Any?
 
-    /// An optional model that provides a view for the section footer.
-    var footerItem: BSTableViewSectionFooterCompatible? { get set }
-
-    /// An array of items (rows) in the section. Each item must conform to `BSTableViewCompatible`.
-    var items: [BSTableViewCompatible] { get set }
-
-    /// Indicates whether rows in this section can be reordered.
-    var canMoveRow: Bool { get }
-
-    /// Optional custom height for the header view. If `nil`, the table view will use the default height.
-    var headerHeight: CGFloat? { get set }
-
-    /// Optional custom height for the footer view. If `nil`, the table view will use the default height.
-    var footerHeight: CGFloat? { get set }
-
-    /// A generic type that can be used to categorize or identify the section (e.g., enum or metadata).
-    var typeSection: Any? { get set }
-}
-
-// MARK: - Default Implementation
-
-public extension BSTableViewSection {
-
-    /// Default implementation that disallows row reordering.
-    var canMoveRow: Bool {
-        false
+    init(
+        headerItem: BSTableViewSectionHeaderCompatible? = nil,
+        items: [BSTableViewCompatible],
+        footerItem: BSTableViewSectionFooterCompatible? = nil,
+        headerHeight: CGFloat? = nil,
+        footerHeight: CGFloat? = nil,
+        typeSection: Any? = nil
+    ) {
+        self.headerItem = headerItem
+        self.items = items
+        self.footerItem = footerItem
+        self.typeSection = typeSection
+        if let headerHeight {
+            self.headerHeight = headerHeight
+        } else {
+            self.headerHeight = headerItem == nil
+            ? CGFloat.leastNonzeroMagnitude
+            : UITableView.automaticDimension
+        }
+        if let footerHeight {
+            self.footerHeight = footerHeight
+        } else {
+            self.footerHeight = footerItem == nil
+            ? CGFloat.leastNonzeroMagnitude
+            : UITableView.automaticDimension
+        }
     }
 }
 #endif
