@@ -50,7 +50,7 @@ public extension BSTableViewData {
 
     /// Subscript to access or assign a `BSTableViewCompatible` model at a specific `IndexPath`.
     /// - Note: The setter inserts the new value at the specified index without removing the existing item.
-    subscript(indexPath: IndexPath) -> TableViewCompatible {
+    subscript(indexPath: IndexPath) -> BSTableViewCompatible {
         get {
             sections[indexPath.section].items[indexPath.row]
         }
