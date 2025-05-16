@@ -50,5 +50,22 @@ open class BSTableViewCell: UITableViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
     }
+
+    /// Handles the cell’s highlight state change with animation.
+
+    /// Overrides the default highlight behavior to animate the background color
+    /// of the cell’s `contentView` using the `ColorKit.TableCell.background` color.
+
+    /// - Parameters:
+    ///   - highlighted: A Boolean value indicating whether the cell is highlighted.
+    ///   - animated: A Boolean value indicating whether the change should be animated.
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+
+        contentView.layer.animateBackground(
+            isHighlighted: highlighted,
+            currentBackgroundColor: ColorKit.Common.cadetBlue
+        )
+    }
 }
 #endif

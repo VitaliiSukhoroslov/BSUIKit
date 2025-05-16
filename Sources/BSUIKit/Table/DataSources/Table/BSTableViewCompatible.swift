@@ -23,8 +23,6 @@ protocol TableViewCellSwitchCompatible: BSTableViewCompatible {
     func becomeFirstResponder() -> Bool
 }
 
-// swiftlint:disable line_length
-
 /**
  Adopt this protocol in your model objects to make them compatible with `UITableView`.
 
