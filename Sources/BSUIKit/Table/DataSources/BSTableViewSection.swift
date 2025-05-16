@@ -28,6 +28,8 @@ public class BSTableViewSection: BSTableViewSectionProtocol {
         self.footerItem = footerItem
         if let headerHeight {
             self.headerHeight = headerHeight
+        } else if headerItem != nil {
+            self.headerHeight = 30
         } else {
             self.headerHeight = headerItem == nil
             ? CGFloat.leastNonzeroMagnitude
@@ -35,6 +37,8 @@ public class BSTableViewSection: BSTableViewSectionProtocol {
         }
         if let footerHeight {
             self.footerHeight = footerHeight
+        } else if footerItem != nil {
+            self.footerHeight = 30
         } else {
             self.footerHeight = footerItem == nil
             ? CGFloat.leastNonzeroMagnitude

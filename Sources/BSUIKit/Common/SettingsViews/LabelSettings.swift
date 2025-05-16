@@ -31,7 +31,7 @@ public struct LabelSettings {
         self.attributedText = attributedText
     }
 
-    public func setupLabel(_ label: UILabel, title: String? = nil) {
+    public func setup(_ label: UILabel, title: String? = nil) {
         label.textAlignment = alignment
         label.numberOfLines = numberOfLines
         label.font = font

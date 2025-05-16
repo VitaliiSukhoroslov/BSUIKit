@@ -3,8 +3,8 @@
 
 import UIKit
 
-var currentCellBackgroundColor: UIColor?
+var arrowImage: UIImage?
 
-public func setCurrentCellBackgroundColor(_ color: UIColor?) {
-    currentCellBackgroundColor = color
+public func setArrowCellImage(_ image: UIImage?) {
+    arrowImage = image
 }
