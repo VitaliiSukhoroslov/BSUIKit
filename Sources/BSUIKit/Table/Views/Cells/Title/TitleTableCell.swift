@@ -6,7 +6,6 @@
 //  
 //
 
-#if os(iOS)
 import UIKit
 import SnapKit
 
@@ -44,7 +43,6 @@ public class TitleTableCell: BSTableViewCell, CellConfigurable {
     }
 
     override public func initListeners() {
-//        selectionStyle = .none
+        selectionStyle(.animate)
     }
 }
-#endif

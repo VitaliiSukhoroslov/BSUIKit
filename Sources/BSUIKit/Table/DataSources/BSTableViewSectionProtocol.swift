@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// A protocol representing a section in a `UITableView`, including its header, footer, and row items.
@@ -41,4 +40,3 @@ public extension BSTableViewSectionProtocol {
         false
     }
 }
-#endif

@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// A protocol defining a set of common UI colors used throughout the application.
@@ -58,4 +57,3 @@ public extension ColorKit {
         public static let spaceCadet = UIColor(netHex: 0x242E49)
     }
 }
-#endif

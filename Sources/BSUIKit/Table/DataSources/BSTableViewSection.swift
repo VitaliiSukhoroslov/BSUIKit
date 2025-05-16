@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 public class BSTableViewSection: BSTableViewSectionProtocol {
@@ -43,4 +42,3 @@ public class BSTableViewSection: BSTableViewSectionProtocol {
         }
     }
 }
-#endif

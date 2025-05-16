@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 extension UIColor {
@@ -25,4 +24,3 @@ extension UIColor {
         )
     }
 }
-#endif

@@ -5,18 +5,32 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
-/// `BaseTableViewCell` - Base table cell class with user interface presets and convenient settings.
-/// Provides the basic structure for creating UI components, adding blocking, and listening to events.
+/// `BSTableViewCell` – A base class for custom `UITableViewCell` implementations with built-in UI setup, layout constraints, and interaction handling.
+///
+/// Designed to be subclassed, this cell provides a structured lifecycle for setting up the UI (`initUI()`),
+/// applying constraints (`initConstraints()`), attaching event handlers (`initListeners()`),
+/// and customizing appearance (`additionalSetup()`).
+///
+/// It also includes a configurable highlight animation for user selection feedback.
 public class BSTableViewCell: UITableViewCell {
 
-    /// Initializer for creating a cell programmatically.
-    /// Initializes the user interface, adding constraints and event listeners.
+    public enum SelectionAnimation {
+        case none
+        case animate
+    }
+
+    /// Flag indicating whether highlight animations are enabled.
+    private var isSelectedAnimationEnabled = true
+
+    // MARK: - Initializers
+
+    /// Initializes the cell with the given style and reuse identifier.
+    ///
     /// - Parameters:
-    ///  - style: Cell style.
-    ///  - reuseIdentifier: Identifier for reusing the cell.
+    ///   - style: The cell style.
+    ///   - reuseIdentifier: A string used to identify the cell object to be reused.
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initUI()
@@ -25,48 +39,56 @@ public class BSTableViewCell: UITableViewCell {
         additionalSetup()
     }
 
-
-    /// Initializer for initializing a cell from a storyboard or xib.
-    /// Generates an error because this class is only intended to create cells programmatically.
+    /// Required initializer for decoding from storyboard or XIB.
+    ///
+    /// This class is intended for programmatic use only and does not support storyboard/XIB instantiation.
     @available(*, unavailable)
-    override required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup Methods
-    /// Method for initializing the user interface. Overridden in subclasses.
+    // MARK: - Lifecycle & Setup
+
+    /// Override this method in subclasses to initialize UI components.
     open func initUI() {
+        // Implement in subclass
     }
 
-    /// Method for adding interface restrictions. Overridden in subclasses.
+    /// Override this method in subclasses to define layout constraints.
     open func initConstraints() {
+        // Implement in subclass
     }
 
-    /// Method for adding event listeners (handlers). Overridden in subclasses.
+    /// Override this method in subclasses to attach event listeners or gesture recognizers.
     open func initListeners() {
+        // Implement in subclass
     }
 
-    /// Additional cell settings. Sets a transparent background for the cell and its contents.
+    /// Additional setup logic for the cell.
+    /// Sets transparent backgrounds for the cell and disables selection style.
     open func additionalSetup() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
+        selectionStyle = .none
     }
 
-    /// Handles the cell’s highlight state change with animation.
+    /// Enables or disables selection highlight animation for the cell.
+    /// - Parameter state: A Boolean flag indicating whether highlight animation should be active.
+    public func selectionStyle(_ style: SelectionAnimation) {
+        isSelectedAnimationEnabled = (style == .animate) ? true : false
+    }
 
-    /// Overrides the default highlight behavior to animate the background color
-    /// of the cell’s `contentView` using the `ColorKit.TableCell.background` color.
-
+    /// Handles highlight state changes with animation support if enabled.
     /// - Parameters:
-    ///   - highlighted: A Boolean value indicating whether the cell is highlighted.
-    ///   - animated: A Boolean value indicating whether the change should be animated.
+    ///   - highlighted: A Boolean value that indicates if the cell is currently highlighted.
+    ///   - animated: A Boolean value that indicates whether the highlight change should be animated.
     override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
 
+        guard isSelectedAnimationEnabled else { return }
+
         contentView.layer.animateBackground(
-            isHighlighted: highlighted,
-            currentBackgroundColor: ColorKit.Common.cadetBlue
+            isHighlighted: highlighted
         )
     }
 }
-#endif

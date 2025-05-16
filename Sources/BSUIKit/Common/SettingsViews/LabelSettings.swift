@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 03.10.2024.
 //
 
-#if os(iOS)
 import UIKit
 
 public struct LabelSettings {
@@ -45,4 +44,3 @@ public struct LabelSettings {
         }
     }
 }
-#endif

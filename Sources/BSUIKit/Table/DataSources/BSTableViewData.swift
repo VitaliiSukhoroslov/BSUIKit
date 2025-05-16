@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// A protocol that provides structured data and layout information for use in a `UITableView`.
@@ -13,7 +12,7 @@ import UIKit
 public protocol BSTableViewData {
 
     /// An array of sections containing the items (rows), headers, and footers for the table view.
-    var sections: [BSTableViewSection] { get set }
+    var sections: [BSTableViewSectionProtocol] { get set }
 
     /// Subscript to access or update a model at a given `IndexPath`.
     subscript(indexPath: IndexPath) -> BSTableViewCompatible { get set }
@@ -90,4 +89,3 @@ public extension BSTableViewData {
         sections[section].footerItem?.footerForTableView(tableView: tableView, viewForFooterInSection: section)
     }
 }
-#endif

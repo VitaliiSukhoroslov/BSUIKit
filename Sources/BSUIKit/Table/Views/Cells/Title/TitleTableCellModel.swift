@@ -6,7 +6,6 @@
 //  
 //
 
-#if os(iOS)
 import UIKit
 
 open class TitleTableCellModel: BSTableViewCompatible {
@@ -41,10 +40,10 @@ open class TitleTableCellModel: BSTableViewCompatible {
 
     open var labelSettings: LabelSettings = .init(
         alignment: .left,
-        font: .systemFont(ofSize: 13),
+        font: .systemFont(ofSize: 17, weight: .semibold),
         textColor: .black,
         numberOfLines: 0,
-        insets: .init(top: 0, left: 16, bottom: 0, right: 16)
+        insets: .init(top: 16, left: 16, bottom: 16, right: 16)
     )
 }
 
@@ -57,4 +56,3 @@ extension TitleTableCellModel {
         }
     }
 }
-#endif

@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 extension CALayer {
@@ -14,7 +13,7 @@ extension CALayer {
         currentBackgroundColor: UIColor = UIColor.clear,
         highlightedColor: UIColor? = nil
     ) {
-        let highlightedColor: UIColor = highlightedColor ?? currentBackgroundColor.withAlphaComponent(0.8)
+        let highlightedColor: UIColor = highlightedColor ?? currentBackgroundColor.withAlphaComponent(0.2)
 
         if isHighlighted {
             backgroundColor = highlightedColor.cgColor
@@ -36,4 +35,3 @@ extension CALayer {
         self.add(colorAnimation, forKey: "backgroundColor")
     }
 }
-#endif

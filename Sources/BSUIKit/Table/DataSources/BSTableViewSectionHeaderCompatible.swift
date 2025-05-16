@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// A protocol representing a section header in a `UITableView`.
@@ -39,4 +38,3 @@ public extension BSTableViewSectionHeaderCompatible {
         false
     }
 }
-#endif

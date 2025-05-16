@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// A base class `BSTableViewDataSource` - that acts as a data source and delegate for `UITableView`.
@@ -17,6 +16,9 @@ open class BSTableViewDataSource: NSObject, BSTableViewData, UITableViewDataSour
 
     /// Closure called when a cell becomes one of the visible cells during scrolling.
     public var onLastVisibleCell: ((IndexPath) -> Void)?
+
+    /// Closure called when selected row
+    public var onSelectedRow: ((IndexPath) -> Void)?
 
     /// The associated `UITableView`.
     public let tableView: UITableView
@@ -102,6 +104,12 @@ open class BSTableViewDataSource: NSObject, BSTableViewData, UITableViewDataSour
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         onPrefetchRows?(indexPaths)
     }
+
+    /// Called to begin selected row
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        onSelectedRow?(indexPath)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -140,4 +148,3 @@ extension BSTableViewDataSource: UIScrollViewDelegate {
         }
     }
 }
-#endif

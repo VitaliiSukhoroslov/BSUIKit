@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// `BaseView` is a base class for custom views that simplifies the process of creating and customizing a user interface.
@@ -43,4 +42,3 @@ public class BSView: UIView {
     open func initListeners() {
     }
 }
-#endif

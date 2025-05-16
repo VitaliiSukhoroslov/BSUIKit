@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 /// A protocol that represents a table view cell model with switching capability (e.g., toggles, responders).
@@ -47,4 +46,3 @@ public protocol BSTableViewCompatible: BSCollectionAndTableViewCompatible {
      */
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath) -> UITableViewCell
 }
-#endif

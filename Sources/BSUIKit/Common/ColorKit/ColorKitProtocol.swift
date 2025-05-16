@@ -4,7 +4,7 @@
 //
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
-#if os(iOS)
+
 /// A protocol defining a structure for organizing color groups used throughout the application.
 
 /// This protocol uses associated types to allow flexibility in how different color categories
@@ -14,4 +14,3 @@
 protocol ColorKitProtocol {
     associatedtype Common: CommonColorProtocol
 }
-#endif

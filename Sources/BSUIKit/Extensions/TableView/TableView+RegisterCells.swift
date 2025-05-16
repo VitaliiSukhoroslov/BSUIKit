@@ -5,7 +5,6 @@
 //  Created by Виталий Сухорослов on 16.05.2025.
 //
 
-#if os(iOS)
 import UIKit
 
 public extension UITableView {
@@ -47,4 +46,3 @@ public extension UITableView {
         )
     }
 }
-#endif
