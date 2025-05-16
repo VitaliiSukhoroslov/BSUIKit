@@ -58,7 +58,11 @@ public class BSButton: ActionButton, LoadableView {
         set(value) {
             super.isEnabled = value
 
-            backgroundColor = backgroundColor?.withAlphaComponent(isEnabled ? 1.0 : 0.3)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [weak self] in
+                guard let self else { return }
+
+                alpha = isEnabled ? 1.0 : 0.3
+            }
         }
     }
 
