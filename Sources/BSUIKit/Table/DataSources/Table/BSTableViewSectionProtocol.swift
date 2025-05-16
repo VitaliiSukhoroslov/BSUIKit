@@ -30,9 +30,6 @@ public protocol BSTableViewSectionProtocol {
 
     /// Optional custom height for the footer view. If `nil`, the table view will use the default height.
     var footerHeight: CGFloat? { get set }
-
-    /// A generic type that can be used to categorize or identify the section (e.g., enum or metadata).
-    var typeSection: Any? { get set }
 }
 
 // MARK: - Default Implementation
