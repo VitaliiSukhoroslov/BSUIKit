@@ -8,8 +8,9 @@
 
 #if os(iOS)
 import UIKit
+import SnapKit
 
-public final class TitleTableCell: BSTableViewCell, CellConfigurable {
+public class TitleTableCell: BSTableViewCell, CellConfigurable {
 
     public var model: TitleTableCellModel?
 
@@ -31,18 +32,18 @@ public final class TitleTableCell: BSTableViewCell, CellConfigurable {
     // UI
     private let titleLabel = UILabel()
 
-    override func initUI() {
+    override public func initUI() {
         contentView.addSubview(titleLabel)
     }
 
-    override func initConstraints() {
+    override public func initConstraints() {
         titleLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
 
-    override func initListeners() {
+    override public func initListeners() {
 //        selectionStyle = .none
     }
 }

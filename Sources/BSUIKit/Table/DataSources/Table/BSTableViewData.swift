@@ -13,7 +13,7 @@ import UIKit
 public protocol BSTableViewData {
 
     /// An array of sections containing the items (rows), headers, and footers for the table view.
-    var sections: [TableViewSection] { get set }
+    var sections: [BSTableViewSection] { get set }
 
     /// Subscript to access or update a model at a given `IndexPath`.
     subscript(indexPath: IndexPath) -> BSTableViewCompatible { get set }
