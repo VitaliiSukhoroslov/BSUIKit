@@ -9,12 +9,12 @@
 #if os(iOS)
 import UIKit
 
-public final class TitleTableCellModel: BSTableViewCompatible {
+open class TitleTableCellModel: BSTableViewCompatible {
 
     public let input: Input
 
     public init(
-        input: TitleTableCellModel.Input
+        input: Input
     ) {
         self.input = input
     }
