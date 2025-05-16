@@ -51,6 +51,10 @@ public final class TitleTableCellModel: BSTableViewCompatible {
 extension TitleTableCellModel {
     public struct Input {
         var title: String?
+
+        public init(title: String?) {
+            self.title = title
+        }
     }
 }
 #endif
