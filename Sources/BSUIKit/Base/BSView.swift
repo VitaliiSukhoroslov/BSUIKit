@@ -10,7 +10,7 @@ import UIKit
 
 /// `BaseView` is a base class for custom views that simplifies the process of creating and customizing a user interface.
 /// This class sets up common methods for initializing the UI, setting constraints, and adding listeners.
-class BSView: UIView {
+open class BSView: UIView {
 
     // MARK: - Initialization
 
@@ -32,15 +32,15 @@ class BSView: UIView {
 
     // MARK: - Setup Methods
     /// Method for initializing the user interface. Overridden in subclasses.
-    func initUI() {
+    open func initUI() {
     }
 
     /// Method for adding interface restrictions. Overridden in subclasses.
-    func initConstraints() {
+    open func initConstraints() {
     }
 
     /// Method for adding event listeners (handlers). Overridden in subclasses.
-    func initListeners() {
+    open func initListeners() {
     }
 }
 #endif
