@@ -51,19 +51,26 @@ open class TitleTableCellModel: BSTableViewCompatible {
     open var cellSettings: CellSettings {
         .init()
     }
+
+    open var containerSettings: ViewSettings {
+        .init()
+    }
 }
 
 extension TitleTableCellModel {
     public struct CellSettings: CellSettingsSelectionStyle, CellSettingsSeparator {
+        public var insets: UIEdgeInsets
         public var selectedStyle: BSTableViewCell.SelectionAnimation
         public var isShowSeparator: Bool
 
         public init(
             selectedStyle: BSTableViewCell.SelectionAnimation = .none,
-            isShowSeparator: Bool = false
+            isShowSeparator: Bool = false,
+            insets: UIEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 0)
         ) {
             self.selectedStyle = selectedStyle
             self.isShowSeparator = isShowSeparator
+            self.insets = insets
         }
     }
     public struct Input {

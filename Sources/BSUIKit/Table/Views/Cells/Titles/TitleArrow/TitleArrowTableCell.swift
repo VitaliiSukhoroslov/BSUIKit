@@ -35,6 +35,22 @@ public final class TitleArrowTableCell: BSTableViewCell, CellConfigurable {
             arrowImageView.image = .init(imageName: "icon_arrow_right")
         }
 
+        colorBackground = model.containerSettings.backgroundColor
+        model.containerSettings.setup(containerView)
+        containerView.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(model.containerSettings.insets.top)
+            $0.bottom.equalToSuperview().offset(-model.containerSettings.insets.bottom)
+            $0.trailing.equalToSuperview().offset(-model.containerSettings.insets.right)
+            $0.leading.equalToSuperview().offset(model.containerSettings.insets.left)
+        }
+
+        separatorView.snp.remakeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(1)
+            $0.trailing.equalToSuperview().offset(-model.cellSettings.insets.right)
+            $0.leading.equalToSuperview().offset(model.cellSettings.insets.left)
+        }
+
         layoutIfNeeded()
     }
 
@@ -52,7 +68,7 @@ public final class TitleArrowTableCell: BSTableViewCell, CellConfigurable {
     }()
 
     override public func initUI() {
-        contentView.addSubviews(titleLabel, arrowImageView, separatorView)
+        containerView.addSubviews(titleLabel, arrowImageView, separatorView)
     }
 
     override public func initConstraints() {

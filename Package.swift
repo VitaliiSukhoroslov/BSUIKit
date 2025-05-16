@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "BSUIKit",
+    defaultLocalization: "en",
     platforms: [.iOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -24,8 +25,10 @@ let package = Package(
             dependencies: [
                 .product(name: "SnapKit", package: "SnapKit"),
                 .product(name: "Kingfisher", package: "Kingfisher")
-            ]
-        ),
+            ],
+            resources: [
+                .process("Resources/Resources.xcassets")
+            ]        ),
         .testTarget(
             name: "BSUIKitTests",
             dependencies: ["BSUIKit"]

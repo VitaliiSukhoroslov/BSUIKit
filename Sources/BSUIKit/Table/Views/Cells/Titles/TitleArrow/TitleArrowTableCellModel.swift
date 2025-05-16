@@ -51,21 +51,28 @@ open class TitleArrowTableCellModel: BSTableViewCompatible {
     open var cellSettings: CellSettings {
         .init()
     }
+
+    open var containerSettings: ViewSettings {
+        .init()
+    }
 }
 
 extension TitleArrowTableCellModel {
     public struct CellSettings: CellSettingsSelectionStyle,
                                 CellSettingsSeparator,
                                 CellSettingsArrow {
+        public var insets: UIEdgeInsets
         public var isShowArrow: Bool
         public var selectedStyle: BSTableViewCell.SelectionAnimation
         public var isShowSeparator: Bool
 
         public init(
+            insets: UIEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 0),
             selectedStyle: BSTableViewCell.SelectionAnimation = .none,
             isShowSeparator: Bool = false,
             isShowArrow: Bool = false
         ) {
+            self.insets = insets
             self.selectedStyle = selectedStyle
             self.isShowSeparator = isShowSeparator
             self.isShowArrow = isShowArrow

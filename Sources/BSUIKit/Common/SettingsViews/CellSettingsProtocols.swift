@@ -13,6 +13,7 @@ public protocol CellSettingsSelectionStyle {
 
 public protocol CellSettingsSeparator {
     var isShowSeparator: Bool { get }
+    var insets: UIEdgeInsets { get }
 }
 
 public protocol CellSettingsArrow {
