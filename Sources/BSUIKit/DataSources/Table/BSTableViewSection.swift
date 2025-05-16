@@ -9,7 +9,7 @@
 import UIKit
 import NFUIKit
 
-class BSTableViewSection: BSTableViewSectionProtocol {
+public class BSTableViewSection: BSTableViewSectionProtocol {
     var canMoveRow: Bool { false }
 
     var headerItem: BSTableViewSectionHeaderCompatible?
