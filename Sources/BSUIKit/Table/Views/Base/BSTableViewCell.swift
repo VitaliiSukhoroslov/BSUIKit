@@ -79,6 +79,13 @@ open class BSTableViewCell: UITableViewCell {
         )
     }
 
+    public func updateTableView() {
+        if let tableView = self.superview as? UITableView {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
+
     // MARK: - Private
 
     private func setupContainerView() {
