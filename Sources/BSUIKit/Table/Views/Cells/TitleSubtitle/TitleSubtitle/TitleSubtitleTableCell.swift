@@ -1,29 +1,36 @@
 //
-//  TitleTableCell.swift
+//  TitleSubtitleTableCell.swift
 //  BSUIKit
 //
-//  Created by Виталий Сухорослов on 16.05.2025.
+//  Created by Виталий Сухорослов on 19.05.2025.
 //  
 //
 
 import UIKit
 import SnapKit
 
-public class TitleTableCell: BSTableViewCell, CellConfigurable {
+public final class TitleSubtitleTableCell: BSTableViewCell, CellConfigurable {
 
-    public var model: TitleTableCellModel?
+    public var model: TitleSubtitleTableCellModel?
 
-    public func configure(with model: TitleTableCellModel) {
+    public func configure(with model: TitleSubtitleTableCellModel) {
         self.model = model
+
+        mainStackView.removeAllArrangedSubviewsCompletely()
 
         model.titleSettings.setup(titleLabel, title: model.input.title)
 
-        titleLabel.snp.remakeConstraints {
+        mainStackView.addArrangedSubview(titleContainerView)
+        titleContainerView.addSubview(titleLabel)
+
+        titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(model.titleSettings.insets.top)
             $0.bottom.equalToSuperview().offset(-model.titleSettings.insets.bottom)
             $0.trailing.equalToSuperview().offset(-model.titleSettings.insets.right)
             $0.leading.equalToSuperview().offset(model.titleSettings.insets.left)
         }
+
+        setupSubtitle(model.input.subtitle)
 
         separatorView.isHidden = !model.cellSettings.isShowSeparator
         selectionStyle(model.cellSettings.selectedStyle)
@@ -48,7 +55,19 @@ public class TitleTableCell: BSTableViewCell, CellConfigurable {
     }
 
     // UI
+    public let mainStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        return stackView
+    }()
+
+    private let titleContainerView = UIView()
     private let titleLabel = UILabel()
+
+    private let subtitleContainerView = UIView()
+    private let subtitleLabel = UILabel()
+
     private let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = ColorKit.Common.separator
@@ -56,17 +75,32 @@ public class TitleTableCell: BSTableViewCell, CellConfigurable {
     }()
 
     override public func initUI() {
-        containerView.addSubviews(titleLabel, separatorView)
+        containerView.addSubviews(mainStackView, separatorView)
     }
 
     override public func initConstraints() {
-        titleLabel.snp.makeConstraints {
+        mainStackView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview()
         }
         separatorView.snp.makeConstraints {
             $0.leading.bottom.trailing.equalToSuperview()
             $0.height.equalTo(1)
+        }
+    }
+
+    private func setupSubtitle(_ subtitle: String?) {
+        guard let subtitle, let model else { return }
+
+        model.subtitleSettings.setup(subtitleLabel, title: subtitle)
+        mainStackView.addArrangedSubview(subtitleContainerView)
+        subtitleContainerView.addSubview(subtitleLabel)
+
+        subtitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(model.subtitleSettings.insets.top)
+            $0.bottom.equalToSuperview().offset(-model.subtitleSettings.insets.bottom)
+            $0.trailing.equalToSuperview().offset(-model.subtitleSettings.insets.right)
+            $0.leading.equalToSuperview().offset(model.subtitleSettings.insets.left)
         }
     }
 }

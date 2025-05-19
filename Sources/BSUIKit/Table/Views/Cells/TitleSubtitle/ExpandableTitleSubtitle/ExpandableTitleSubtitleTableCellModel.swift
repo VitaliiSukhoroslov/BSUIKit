@@ -1,16 +1,16 @@
 //
-//  TitleArrowTableCellModel.swift
+//  ExpandableTitleSubtitleTableCellModel.swift
 //  BSUIKit
 //
-//  Created by Виталий Сухорослов on 16.05.2025.
+//  Created by Виталий Сухорослов on 19.05.2025.
 //  
 //
 
 import UIKit
 
-open class TitleArrowTableCellModel: BSTableViewCompatible {
+open class ExpandableTitleSubtitleTableCellModel: BSTableViewCompatible {
 
-    public let input: Input
+    public var input: Input
 
     public init(
         input: Input
@@ -20,7 +20,7 @@ open class TitleArrowTableCellModel: BSTableViewCompatible {
 
     // TableViewCompatible
     public var reuseIdentifier: String {
-        String(describing: TitleArrowTableCell.self)
+        String(describing: ExpandableTitleSubtitleTableCell.self)
     }
 
     public func cellForTableView(
@@ -30,7 +30,7 @@ open class TitleArrowTableCellModel: BSTableViewCompatible {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: reuseIdentifier,
             for: indexPath
-        ) as? TitleArrowTableCell else {
+        ) as? ExpandableTitleSubtitleTableCell else {
             return UITableViewCell()
         }
 
@@ -44,7 +44,17 @@ open class TitleArrowTableCellModel: BSTableViewCompatible {
             font: .systemFont(ofSize: 17, weight: .semibold),
             textColor: .black,
             numberOfLines: 0,
-            insets: .init(top: 16, left: 16, bottom: 16, right: 16)
+            insets: .init(top: 0, left: 16, bottom: 0, right: 16)
+        )
+    }
+
+    open var subtitleSettings: LabelSettings {
+        .init(
+            alignment: .left,
+            font: .systemFont(ofSize: 14, weight: .regular),
+            textColor: .black,
+            numberOfLines: 0,
+            insets: .init(top: 0, left: 16, bottom: 16, right: 16)
         )
     }
 
@@ -57,38 +67,42 @@ open class TitleArrowTableCellModel: BSTableViewCompatible {
     }
 
     open var arrowImage: UIImage? {
-        .init(imageName: "icon_arrow_right")
+        input.isExpanded
+        ? .init(imageName: "icon_arrow_up")
+        : .init(imageName: "icon_arrow_down")
     }
 }
 
-extension TitleArrowTableCellModel {
+extension ExpandableTitleSubtitleTableCellModel {
     public struct CellSettings: CellSettingsSelectionStyle,
-                                CellSettingsSeparator,
-                                CellSettingsArrow {
+                                CellSettingsSeparator {
         public var separatorInsets: UIEdgeInsets
-        public var isShowArrow: Bool
         public var selectedStyle: BSTableViewCell.SelectionAnimation
         public var isShowSeparator: Bool
 
         public init(
             separatorInsets: UIEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 0),
             selectedStyle: BSTableViewCell.SelectionAnimation = .none,
-            isShowSeparator: Bool = false,
-            isShowArrow: Bool = false
+            isShowSeparator: Bool = false
         ) {
             self.separatorInsets = separatorInsets
             self.selectedStyle = selectedStyle
             self.isShowSeparator = isShowSeparator
-            self.isShowArrow = isShowArrow
         }
     }
     public struct Input {
-        var title: String?
+        var title: String
+        var subtitle: String
+        var isExpanded: Bool
 
         public init(
-            title: String?
+            title: String,
+            subtitle: String,
+            isExpanded: Bool = false
         ) {
             self.title = title
+            self.subtitle = subtitle
+            self.isExpanded = isExpanded
         }
     }
 }
