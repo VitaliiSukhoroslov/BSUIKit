@@ -114,9 +114,14 @@ public final class ExpandableTitleSubtitleTableCell: BSTableViewCell, CellConfig
     }
 
     public override func initListeners() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapTitle))
         titleContainerView.isUserInteractionEnabled = true
-        titleContainerView.addGestureRecognizer(tapGesture)
+        titleContainerView.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(didTapTitle))
+        )
+        arrowImageView.isUserInteractionEnabled = true
+        arrowImageView.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(didTapTitle))
+        )
     }
 
     @objc

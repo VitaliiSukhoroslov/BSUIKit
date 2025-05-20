@@ -19,3 +19,8 @@ public protocol CellSettingsSeparator {
 public protocol CellSettingsArrow {
     var isShowArrow: Bool { get }
 }
+
+public protocol CellSettingsSwitch {
+    var isEnabledSwitch: Bool { get }
+    var isShowSwitch: Bool { get }
+}
