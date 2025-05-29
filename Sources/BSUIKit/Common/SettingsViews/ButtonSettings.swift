@@ -43,7 +43,7 @@ public struct ButtonSettings {
         backgroundColor: UIColor = .clear,
         borderColor: UIColor = .clear,
         borderWidth: CGFloat = 0,
-        insets: UIEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 16)
+        insets: UIEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0)
     ) {
         self.isShowing = isShowing
         self.isEnabled = isEnabled

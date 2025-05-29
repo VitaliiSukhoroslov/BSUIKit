@@ -16,6 +16,8 @@ import UIKit
 /// It also includes a configurable highlight animation for user selection feedback.
 open class BSTableViewCell: UITableViewCell {
 
+    var onTapContainer: CompletionBlock?
+
     let containerView = UIView()
 
     var colorBackground: UIColor = .clear
@@ -77,6 +79,10 @@ open class BSTableViewCell: UITableViewCell {
             isHighlighted: highlighted,
             currentBackgroundColor: colorBackground
         )
+
+        if highlighted {
+            onTapContainer?()
+        }
     }
 
     public func updateTableView() {

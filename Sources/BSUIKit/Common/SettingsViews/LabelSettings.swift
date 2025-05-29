@@ -20,7 +20,7 @@ public struct LabelSettings {
         font: UIFont = .systemFont(ofSize: 18, weight: .medium),
         textColor: UIColor = .white,
         numberOfLines: Int = 0,
-        insets: UIEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 16),
+        insets: UIEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0),
         attributedText: NSAttributedString? = nil
     ) {
         self.alignment = alignment

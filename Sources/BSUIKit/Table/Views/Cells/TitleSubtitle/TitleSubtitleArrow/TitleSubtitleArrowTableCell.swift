@@ -26,7 +26,7 @@ public final class TitleSubtitleArrowTableCell: BSTableViewCell, CellConfigurabl
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(model.titleSettings.insets.top)
             $0.bottom.equalToSuperview().offset(-model.titleSettings.insets.bottom)
-            $0.trailing.equalToSuperview().offset(-model.titleSettings.insets.right)
+            $0.trailing.equalTo(arrowImageView.snp.leading).offset(-model.titleSettings.insets.right)
             $0.leading.equalToSuperview().offset(model.titleSettings.insets.left)
         }
 

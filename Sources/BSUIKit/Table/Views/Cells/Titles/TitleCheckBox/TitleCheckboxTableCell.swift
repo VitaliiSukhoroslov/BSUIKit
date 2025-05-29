@@ -1,19 +1,19 @@
 //
-//  TitleSwitchTableCell.swift
+//  TitleCheckboxTableCell.swift
 //  BSUIKit
 //
-//  Created by Виталий Сухорослов on 20.05.2025.
+//  Created by Виталий Сухорослов on 29.05.2025.
 //  
 //
 
 import UIKit
 import SnapKit
 
-public final class TitleSwitchTableCell: BSTableViewCell, CellConfigurable {
+public final class TitleCheckboxTableCell: BSTableViewCell, CellConfigurable {
 
-    public var model: TitleSwitchTableCellModel?
+    public var model: TitleCheckboxTableCellModel?
 
-    public func configure(with model: TitleSwitchTableCellModel) {
+    public func configure(with model: TitleCheckboxTableCellModel) {
         self.model = model
 
         model.titleSettings.setup(titleLabel, title: model.input.title)
@@ -21,18 +21,16 @@ public final class TitleSwitchTableCell: BSTableViewCell, CellConfigurable {
         titleLabel.snp.remakeConstraints {
             $0.top.equalToSuperview().offset(model.titleSettings.insets.top)
             $0.bottom.equalToSuperview().offset(-model.titleSettings.insets.bottom)
-            $0.trailing.equalTo(switchView.snp.leading).offset(-model.titleSettings.insets.right)
+            $0.trailing.equalTo(containerCheckBoxView.snp.leading).offset(-model.titleSettings.insets.right)
             $0.leading.equalToSuperview().offset(model.titleSettings.insets.left)
         }
 
         separatorView.isHidden = !model.cellSettings.isShowSeparator
         selectionStyle(model.cellSettings.selectedStyle)
 
-        switchView.isOn = model.isOn
-        switchView.isEnabled = model.cellSettings.isEnabledSwitch
-        switchView.isHidden = !model.cellSettings.isShowSwitch
+        checkBoxImageView.image = model.checkBoxImage
 
-        model.switchSettings.setup(switchView)
+        addTargets()
 
         colorBackground = model.containerSettings.backgroundColor
         model.containerSettings.setup(containerView)
@@ -55,8 +53,10 @@ public final class TitleSwitchTableCell: BSTableViewCell, CellConfigurable {
 
     // UI
     private let titleLabel = UILabel()
-    private let switchView: UISwitch = {
-        let view = UISwitch()
+    private let containerCheckBoxView = UIView()
+    private let checkBoxImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
         return view
     }()
     private let separatorView: UIView = {
@@ -66,18 +66,24 @@ public final class TitleSwitchTableCell: BSTableViewCell, CellConfigurable {
     }()
 
     override public func initUI() {
-        containerView.addSubviews(titleLabel, switchView, separatorView)
+        containerView.addSubviews(titleLabel, containerCheckBoxView, separatorView)
+        containerCheckBoxView.addSubview(checkBoxImageView)
     }
 
     override public func initConstraints() {
         titleLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.leading.equalToSuperview().inset(16)
-            $0.trailing.equalTo(switchView.snp.leading).offset(-16)
+            $0.trailing.equalTo(containerCheckBoxView.snp.leading).offset(10)
         }
-        switchView.snp.makeConstraints {
+        containerCheckBoxView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.size.equalTo(44)
+        }
+        checkBoxImageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(24)
         }
         separatorView.snp.makeConstraints {
             $0.leading.bottom.trailing.equalToSuperview()
@@ -85,13 +91,27 @@ public final class TitleSwitchTableCell: BSTableViewCell, CellConfigurable {
         }
     }
 
-    public override func initListeners() {
-        switchView.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
-    }
+    public override func initListeners() {}
 
-    @objc func switchToggled(_ sender: UISwitch) {
+    private func addTargets() {
         guard let model else { return }
 
-        model.toggleIsOn(sender.isOn)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+
+        if model.cellSettings.selectedStyle == .animate {
+            onTapContainer = { [weak self] in
+                self?.didTap()
+            }
+        } else {
+            containerCheckBoxView.isUserInteractionEnabled = true
+            containerCheckBoxView.addGestureRecognizer(tapGesture)
+        }
+    }
+
+    @objc func didTap() {
+        model?.toggleIsOn()
+        DispatchQueue.main.async { [weak self] in
+            self?.checkBoxImageView.image = self?.model?.checkBoxImage
+        }
     }
 }
