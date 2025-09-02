@@ -16,7 +16,7 @@ open class BSView: UIView {
     /// Initional
     /// - Parameters:
     ///  - frame: Frame
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
 
         initUI()
