@@ -22,7 +22,7 @@ open class BSButton: ActionButton, LoadableView {
         buttonColor.tintColor(isEnabled: true)
     }
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         self.buttonColor = .white
 
         super.init(frame: frame)
