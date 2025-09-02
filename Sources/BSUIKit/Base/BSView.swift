@@ -9,7 +9,7 @@ import UIKit
 
 /// `BaseView` is a base class for custom views that simplifies the process of creating and customizing a user interface.
 /// This class sets up common methods for initializing the UI, setting constraints, and adding listeners.
-public class BSView: UIView {
+open class BSView: UIView {
 
     // MARK: - Initialization
 
@@ -25,7 +25,7 @@ public class BSView: UIView {
 
     // Initialization from the interface file is not available
     @available(*, unavailable)
-    override required init?(coder: NSCoder) {
+    public override required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
