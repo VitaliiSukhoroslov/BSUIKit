@@ -18,6 +18,7 @@ open class BSView: UIView {
     ///  - frame: Frame
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         initUI()
         initConstraints()
         initListeners()
@@ -27,6 +28,10 @@ open class BSView: UIView {
     @available(*, unavailable)
     public override required init?(coder: NSCoder) {
         super.init(coder: coder)
+
+        initUI()
+        initConstraints()
+        initListeners()
     }
 
     // MARK: - Setup Methods
