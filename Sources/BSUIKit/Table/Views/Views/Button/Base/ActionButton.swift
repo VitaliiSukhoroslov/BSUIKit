@@ -31,7 +31,7 @@ open class ActionButton: UIButton {
     // MARK: - Initializers
 
     /// Initializes the button with a given frame.
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
     }
