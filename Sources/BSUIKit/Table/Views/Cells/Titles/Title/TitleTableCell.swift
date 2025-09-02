@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-public class TitleTableCell: BSTableViewCell, CellConfigurable {
+open class TitleTableCell: BSTableViewCell, CellConfigurable {
 
     public var model: TitleTableCellModel?
 

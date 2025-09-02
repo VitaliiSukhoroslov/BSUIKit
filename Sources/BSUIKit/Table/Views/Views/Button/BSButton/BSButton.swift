@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-public class BSButton: ActionButton, LoadableView {
+open class BSButton: ActionButton, LoadableView {
 
     private var bottomConstraint: Constraint?
     private var buttonColor: UNButtonColor
@@ -29,7 +29,7 @@ public class BSButton: ActionButton, LoadableView {
         setupUI()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         self.buttonColor = .white
 
         super.init(coder: aDecoder)

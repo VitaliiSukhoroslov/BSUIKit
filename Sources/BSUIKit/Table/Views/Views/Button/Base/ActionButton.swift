@@ -12,7 +12,7 @@ import UIKit
 ///
 /// This button animates scaling and alpha on touch events, and allows easy callback
 /// configuration through closure properties.
-public class ActionButton: UIButton {
+open class ActionButton: UIButton {
 
     // MARK: - Touch Event Handlers
 
@@ -37,7 +37,7 @@ public class ActionButton: UIButton {
     }
 
     /// Initializes the button from a storyboard or nib.
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setupButton()
     }

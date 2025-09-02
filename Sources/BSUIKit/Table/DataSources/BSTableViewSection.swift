@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BSTableViewSection: BSTableViewSectionProtocol {
+open class BSTableViewSection: BSTableViewSectionProtocol {
     public var canMoveRow: Bool { false }
 
     public var headerItem: BSTableViewSectionHeaderCompatible?
